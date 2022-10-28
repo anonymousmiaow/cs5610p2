@@ -1,0 +1,11 @@
+{
+  "name": "mydiary",
+  "version": "1.0.0",
+  "description": "This is a website application for you to share your moments.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yukun Zhou & Shu Xu",
+  "license": "MIT"
+}

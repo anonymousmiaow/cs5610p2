@@ -25,4 +25,28 @@ router.post("/authenticate", (req, res) => {
   }
 });
 
+router.get("/createUser", async (req, res) => {
+    console.log("createUser");
+});
+
+router.get("/updateUser", async (req, res) => {
+    console.log("updateUser");
+});
+
+router.get("/listDiaries", async (req, res) => {
+    console.log("listDiaries");
+});
+
+router.get("/createDiary", async (req, res) => {
+    console.log("createDiary");
+});
+
+router.get("/updateDiary", async (req, res) => {
+    console.log("updateDiary");
+});
+
+router.get("/deleteDiary", async (req, res) => {
+    console.log("deleteDiary");
+});
+
 export default router;

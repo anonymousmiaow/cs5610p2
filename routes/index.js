@@ -1,17 +1,28 @@
 import express from "express";
+const router = express.Router();
 //import myDB from "../db/MyMongoDB.js";
 
-const router = express.Router();
-
-router.get("/", (req, res) => {
-  res.json({ message: "Welcome to your blog!" });
+router.get("/getCurrentUser", (req, res) => {
+  console.log("getCurrentUser", req.session);
+  res.json({
+    isLoggedIn: !!req.session.user,
+    user: req.session.user,
+  });
 });
 
-// router.get("/getQuakes", async (req, res) => {
-//   console.log("params", req.query);
-//   const page = req.query.page || 0;
-//   //const quakes = await myDB.getQuakes({}, page);
-//   res.json("my website");
-// });
+router.post("/authenticate", (req, res) => {
+  // TODO: validate that the user data is correct
+  const user = req.body;
+
+  // TODO: validate on Mongo the user credentials
+  if (user.user === "k" && user.password == "1") {
+    req.session.user = { user: user.user };
+
+    res.json({ isLoggedIn: true, err: null });
+  } else {
+    req.session.user = null;
+    res.json({ isLoggedIn: false, err: "Wrong User or Password" });
+  }
+});
 
 export default router;

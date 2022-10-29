@@ -28,8 +28,8 @@
             aria-label="Close"
           ></button>
         </div>
-        <h1 class="text-center">Welcome Back!</h1>
-        <form id="login">
+        <h1 class="text-center">Create Account</h1>
+        <form id="signup">
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input
@@ -56,12 +56,12 @@
 
           <!-- Submit button -->
           <button type="submit" class="btn btn-primary btn-block mb-4">
-            Sign in
+            Sign Up
           </button>
 
           <!-- Register buttons -->
           <div class="text-center">
-            <p>Not a member? <a href="./signup.html">Register</a></p>
+            <p>Already a member? <a href="./login.html">Sign In</a></p>
           </div>
         </form>
       </main>
@@ -74,8 +74,7 @@
 
     <script type="module">
       import clientIndex from "./js/clientIndex.js";
-
-      clientIndex.setupLogin();
+      clientIndex.setupSignup();
     </script>
   </body>
 </html>

@@ -51,7 +51,6 @@ function ClientIndex() {
     }
   }
 
-  // TODO handle login
   clientIndex.setupLogin = function () {
     console.log("Setup login");
     const form = document.querySelector("form#login");
@@ -61,6 +60,31 @@ function ClientIndex() {
       console.log("Authenticating");
       try {
         res = await fetch("./authenticate", {
+          method: "POST",
+          body: new URLSearchParams(new FormData(form)),
+        });
+        const resUser = await res.json();
+        if (resUser.isLoggedIn) {
+          redirect("index");
+        } else {
+          showMessage(resUser.err);
+        }
+      } catch (err) {
+        // TODO implement error handling for the user;
+        console.log(err);
+      }
+    });
+  };
+
+  clientIndex.setupSignup = function () {
+    console.log("Setup signup");
+    const form = document.querySelector("form#signup");
+    let res;
+    form.addEventListener("submit", async (evt) => {
+      evt.preventDefault();
+      console.log("Signing up");
+      try {
+        res = await fetch("./signup", {
           method: "POST",
           body: new URLSearchParams(new FormData(form)),
         });

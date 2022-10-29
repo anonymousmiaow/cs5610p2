@@ -1,6 +1,7 @@
 import express from "express";
+import myDB from "../db/MyDB.js";
+
 const router = express.Router();
-//import myDB from "../db/MyMongoDB.js";
 
 router.get("/getCurrentUser", (req, res) => {
   console.log("getCurrentUser", req.session);
@@ -25,8 +26,21 @@ router.post("/authenticate", (req, res) => {
   }
 });
 
-router.get("/createUser", async (req, res) => {
-    console.log("createUser");
+router.get("/logout", (req, res) => {
+  req.session.user = null;
+  res.json({ isLoggedIn: false, msg: "Logout successful" });
+});
+
+router.post("/signup", async (req, res) => {
+  // Save user to db
+  const user = req.body;
+  const success = await myDB.createUser(user);
+  if(!success) {
+    res.json({ isLoggedIn: false, err: "User alreay exists" });
+    return;
+  }
+  req.session.user = { user: user.user };
+  res.json({ isLoggedIn: true, err: null });
 });
 
 router.get("/updateUser", async (req, res) => {

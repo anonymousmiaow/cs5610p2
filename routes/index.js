@@ -11,14 +11,12 @@ router.get("/getCurrentUser", (req, res) => {
   });
 });
 
-router.post("/authenticate", (req, res) => {
+router.post("/authenticate", async (req, res) => {
   // TODO: validate that the user data is correct
   const user = req.body;
-
-  // TODO: validate on Mongo the user credentials
-  if (user.user === "k" && user.password == "1") {
+  const success = await myDB.authenticate(user);
+  if (success) {
     req.session.user = { user: user.user };
-
     res.json({ isLoggedIn: true, err: null });
   } else {
     req.session.user = null;

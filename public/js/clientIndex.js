@@ -32,6 +32,10 @@ function ClientIndex() {
       p.innerHTML = `${post.content}`;
       entry.appendChild(p);
       entry.appendChild(small);
+      entry.addEventListener("click",  (evt) => {
+        console.log("clicked");
+        window.location.replace("diary.html?id=" + post._id);
+      });
       list.appendChild(entry);
     }
     // divContent.innerHTML = `

@@ -63,4 +63,11 @@ router.get("/deleteDiary", async (req, res) => {
     console.log("deleteDiary");
 });
 
+router.get("/getDiary", async (req, res) => {
+    console.log("getDiary");
+    console.log(req.query.id);
+    const diary = await myDB.getDiary(req.query.id);
+    res.json(diary);
+});
+
 export default router;

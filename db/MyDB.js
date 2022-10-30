@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { ObjectId } from "mongodb";
 
 function MyDB() {
   const myDB = {};
@@ -39,8 +40,19 @@ function MyDB() {
     try {
       client = new MongoClient(mongoURL);
       const diaries = client.db("Diary").collection("diaries");
-      console.log("USER " + user.user);
       const res = await diaries.find({author:user.user}).toArray();
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
+  myDB.getDiary = async function (id = "") {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const diaries = client.db("Diary").collection("diaries");
+      const res = await diaries.findOne({_id:ObjectId(id)});
       console.log(res);
       return res;
     } finally {

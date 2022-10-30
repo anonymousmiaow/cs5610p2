@@ -41,7 +41,6 @@ function ClientIndex() {
       if (resUser.isLoggedIn) {
         currentUser = resUser.user;
         getPosts();
-        renderUsername(currentUser.user);
       } else {
         currentUser = null;
         redirect("login");
@@ -51,12 +50,6 @@ function ClientIndex() {
       console.log(err);
     }
   }
-
-  function renderUsername (username) {
-    console.log("renderUsername");
-    const usernameEl = document.getElementById("navUsername");
-    usernameEl.innerHTML = "Welcome, " + username + "!";
-  };
 
   clientIndex.setupLogin = function () {
     console.log("Setup login");
@@ -121,15 +114,7 @@ function ClientIndex() {
     });
   };
 
-  clientIndex.setupNewpostClick = function () {
-    const el = document.getElementById("newpost");
-    el.addEventListener("click",  (evt) => {
-      window.location.replace("newpost.html");
-    });
-  };
-
   clientIndex.getCurrentUser = getCurrentUser;
-
   return clientIndex;
 }
 

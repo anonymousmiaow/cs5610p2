@@ -15,6 +15,20 @@
   <body>
     <div class="container">
       <main>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Disabled</a>
+  </li>
+</ul>
         <div
           class="alert alert-warning alert-dismissible fade show"
           role="alert"
@@ -28,8 +42,8 @@
             aria-label="Close"
           ></button>
         </div>
-        <h1 class="text-center">Welcome Back!</h1>
-        <form id="login">
+        <h1 class="text-center">Welcome to the Diary App!</h1>
+        <form id="login" class="mx-5">
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input
@@ -73,9 +87,8 @@
     ></script>
 
     <script type="module">
-      import clientIndex from "./js/clientIndex.js";
-
-      clientIndex.setupLogin();
+      import login from "./js/login.js";
+      login.setupLogin();
     </script>
   </body>
 </html>

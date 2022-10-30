@@ -24,8 +24,7 @@
           </li>
         </ul>
         <div class="mt-4 mb-4 d-flex justify-content-between">
-          <div class="h1">Welcome to the Diary App!</div>
-          <button class="btn btn-primary me-md-2 justify-content-md-end" id="newpost" type="button">New post</button>
+          <div class="h1">Post a new diary</div>
         </div>
         <div
           class="alert alert-warning alert-dismissible fade show"
@@ -40,33 +39,15 @@
             aria-label="Close"
           ></button>
         </div>
-        <div id="content"></div>
-        <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Title</label>
+          <input class="form-control" id="exampleFormControlInput1" placeholder="A memorable day">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Context</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
+        </div>
     </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small>And some small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
-  </a>
-</div>
       </main>
     </div>
     <script
@@ -76,11 +57,9 @@
     ></script>
 
     <script type="module">
-      import clientIndex from "./js/clientIndex.js";
+      import newpost from "./js/newpost.js";
       clientIndex.getCurrentUser();
       clientIndex.setupLogout();
-      clientIndex.setupNewpostClick();
-      //clientIndex.renderUsername();
     </script>
   </body>
 </html>

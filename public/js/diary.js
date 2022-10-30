@@ -32,14 +32,14 @@ function Diary() {
     window.location.replace(page + ".html");
   }
 
-  async function getCurrentUser() {
+  diary.getCurrentUser = async function() {
     let res;
     try {
       res = await fetch("./getCurrentUser");
       const resUser = await res.json();
       if (resUser.isLoggedIn) {
         currentUser = resUser.user;
-        getPosts();
+        renderUsername(currentUser.user);
       } else {
         currentUser = null;
         redirect("login");
@@ -50,54 +50,10 @@ function Diary() {
     }
   }
 
-  diary.setupLogin = function () {
-    console.log("Setup login");
-    const form = document.querySelector("form#login");
-    let res;
-    form.addEventListener("submit", async (evt) => {
-      evt.preventDefault();
-      console.log("Authenticating");
-      try {
-        res = await fetch("./authenticate", {
-          method: "POST",
-          body: new URLSearchParams(new FormData(form)),
-        });
-        const resUser = await res.json();
-        if (resUser.isLoggedIn) {
-          redirect("index");
-        } else {
-          showMessage(resUser.err);
-        }
-      } catch (err) {
-        // TODO implement error handling for the user;
-        console.log(err);
-      }
-    });
-  };
-
-  diary.setupSignup = function () {
-    console.log("Setup signup");
-    const form = document.querySelector("form#signup");
-    let res;
-    form.addEventListener("submit", async (evt) => {
-      evt.preventDefault();
-      console.log("Signing up");
-      try {
-        res = await fetch("./signup", {
-          method: "POST",
-          body: new URLSearchParams(new FormData(form)),
-        });
-        const resUser = await res.json();
-        if (resUser.isLoggedIn) {
-          redirect("index");
-        } else {
-          showMessage(resUser.err);
-        }
-      } catch (err) {
-        // TODO implement error handling for the user;
-        console.log(err);
-      }
-    });
+  function renderUsername(username) {
+    console.log("renderUsername");
+    const usernameEl = document.getElementById("navUsername");
+    usernameEl.innerHTML = "Welcome, " + username + "!";
   };
 
   diary.setupLogout = function () {
@@ -132,6 +88,17 @@ function Diary() {
     }
   };
 
+  diary.setupEdit = function () {
+    const el = document.getElementById("edit");
+    let res;
+    el.addEventListener("click", async (evt) => {
+      evt.preventDefault();
+      console.log("edit");
+      const p = new URLSearchParams(window.location.search);
+      window.location.replace("editdiary.html?id=" + p.get("id"));
+    });
+  };
+
   diary.setupDelete = function () {
     const el = document.getElementById("delete");
     let res;
@@ -146,7 +113,6 @@ function Diary() {
     });
   };
 
-  diary.getCurrentUser = getCurrentUser;
   return diary;
 }
 

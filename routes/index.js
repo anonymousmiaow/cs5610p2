@@ -51,12 +51,17 @@ router.get("/listDiaries", async (req, res) => {
     res.json(diaries);
 });
 
-router.get("/createDiary", async (req, res) => {
+router.post("/createDiary", async (req, res) => {
     console.log("createDiary");
+    console.log(req.body);
+    await myDB.createDiary(req.body, req.session.user);
+    res.json({msg: "Diary saved" });
 });
 
-router.get("/updateDiary", async (req, res) => {
+router.post("/editDiary", async (req, res) => {
     console.log("updateDiary");
+    const diary = await myDB.editDiary(req.query.id, req.body);
+    res.json({msg: "Diary updated" });
 });
 
 router.get("/deleteDiary", async (req, res) => {

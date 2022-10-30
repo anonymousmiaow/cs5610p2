@@ -35,6 +35,19 @@ function MyDB() {
       client.close();
     }
   };
+  myDB.createDiary = async function (entry = {}, user = {}) {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const diaries = client.db("Diary").collection("diaries");
+      const res = await diaries.insertOne({author:user.user, title:entry.title, content:entry.content});
+      //console.log(res);
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
   myDB.listDiaries = async function (user = {}) {
     let client;
     try {
@@ -60,13 +73,24 @@ function MyDB() {
       client.close();
     }
   };
+  myDB.editDiary = async function (id = "", entry = {}) {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const diaries = client.db("Diary").collection("diaries");
+      const res = await diaries.update({_id:ObjectId(id)}, {$set:{content:entry.content}});
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
   myDB.deleteDiary = async function (id = "") {
     let client;
     try {
       client = new MongoClient(mongoURL);
       const diaries = client.db("Diary").collection("diaries");
       const res = await diaries.deleteOne({_id:ObjectId(id)});
-      console.log(res);
       return res;
     } finally {
       console.log("Diary: Closing db connection");

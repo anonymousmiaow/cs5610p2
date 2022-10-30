@@ -173,7 +173,7 @@ function ClientIndex() {
   clientIndex.setupNewpostClick = function () {
     const el = document.getElementById("newpost");
     el.addEventListener("click",  (evt) => {
-      window.location.replace("newpost.html");
+      window.location.replace("newdiary.html");
     });
   };
 

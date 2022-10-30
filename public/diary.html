@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-md">
       <main>
         <div
           class="alert alert-warning alert-dismissible fade show"
@@ -29,7 +29,11 @@
           ></button>
         </div>
         <h1 id="title" class="text-center mb-4"></h1>
-        <h5 id="content"></h5>
+        <h5 id="content" class="mb-4"></h5>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-primary mx-5">Edit</button>
+          <button id="delete" type="button" class="btn btn-danger mx-5">Delete</button>
+        </div>
       </main>
     </div>
     <script
@@ -41,6 +45,7 @@
     <script type="module">
       import diary from "./js/diary.js";
       diary.getDiary();
+      diary.setupDelete();
     </script>
   </body>
 </html>

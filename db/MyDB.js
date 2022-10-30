@@ -60,6 +60,19 @@ function MyDB() {
       client.close();
     }
   };
+  myDB.deleteDiary = async function (id = "") {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const diaries = client.db("Diary").collection("diaries");
+      const res = await diaries.deleteOne({_id:ObjectId(id)});
+      console.log(res);
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
   return myDB;
 }
 

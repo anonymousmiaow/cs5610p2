@@ -61,6 +61,9 @@ router.get("/updateDiary", async (req, res) => {
 
 router.get("/deleteDiary", async (req, res) => {
     console.log("deleteDiary");
+    console.log(req.query.id);
+    const diary = await myDB.deleteDiary(req.query.id);
+    res.json({msg: "Diary deleted" });
 });
 
 router.get("/getDiary", async (req, res) => {

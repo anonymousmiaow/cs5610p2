@@ -118,12 +118,32 @@ function Diary() {
     try {
       const p = new URLSearchParams(window.location.search);
       res = await fetch("./getDiary?id=" + p.get("id"));
-      const posts = await res.json();
-      renderPosts(posts);
+      const post = await res.json();
+      console.log(post);
+      if(!post) {
+        console.log(post);
+        redirect("/index");
+      } else {
+        renderPosts(post);
+      }
     } catch (err) {
       // TODO implement error handling for the user;
       console.log(err);
     }
+  };
+
+  diary.setupDelete = function () {
+    const el = document.getElementById("delete");
+    let res;
+    el.addEventListener("click", async (evt) => {
+      evt.preventDefault();
+      console.log("delete");
+      const p = new URLSearchParams(window.location.search);
+      res = await fetch("/deleteDiary?id=" + p.get("id"));
+      const resDelete = await res.json();
+      showMessage("Dairy deleted!");
+      setTimeout(() => redirect("/index"), 2000);
+    });
   };
 
   diary.getCurrentUser = getCurrentUser;

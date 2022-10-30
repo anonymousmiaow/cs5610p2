@@ -47,6 +47,8 @@ router.get("/updateUser", async (req, res) => {
 
 router.get("/listDiaries", async (req, res) => {
     console.log("listDiaries");
+    const diaries = await myDB.listDiaries(req.session.user);
+    res.json(diaries);
 });
 
 router.get("/createDiary", async (req, res) => {

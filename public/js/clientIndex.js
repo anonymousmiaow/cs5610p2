@@ -10,17 +10,62 @@ function ClientIndex() {
   }
 
   function renderPosts(posts) {
-    const divContent = document.querySelector("#content");
-    divContent.innerHTML = `
-      <h2>Posts for ${currentUser.user}</h2>
-      ${posts.map((p) => `<div>Text: ${p.text}</div>`).join("")}
-    `;
+    const list = document.getElementById("list");
+
+    console.log(posts);
+    for(const post of posts) {
+      console.log(post);
+      const entry = document.createElement("a");
+      entry.className = "list-group-item list-group-item-action";
+      const div = document.createElement("div");
+      div.className = "d-flex w-100 justify-content-between";
+      const h5 = document.createElement("h5");
+      h5.className = "mb-1";
+      h5.innerHTML = `${post.title}`;
+      const small = document.createElement("small");
+      small.className = "text-muted";
+      small.innerHTML = `Some small print`;
+      div.appendChild(h5);
+      entry.appendChild(div);
+      const p = document.createElement("p");
+      p.className = "mb-1";
+      p.innerHTML = `${post.content}`;
+      entry.appendChild(p);
+      entry.appendChild(small);
+      list.appendChild(entry);
+    }
+    // divContent.innerHTML = `
+    //   <h2>Posts for ${currentUser.user}</h2>
+    //   ${posts.map((p) => `<div>Text: ${p.title}</div>`).join("")}
+    // `;
+    //
+    // divContent.innerHTML = `
+    //   <h2>Posts for ${currentUser.user}</h2>
+    //   ${posts.map((p) => `<a href="#" class="list-group-item list-group-item-action">
+    //     <div class="d-flex w-100 justify-content-between">
+    //       <h5 class="mb-1">${p.title}</h5>
+    //       <small class="text-muted">3 days ago</small>
+    //     </div>
+    //     <p class="mb-1">${p.content}</p>
+    //   </a>`).join("")}
+    // `;
+
+
+
+    // <a href="#" class="list-group-item list-group-item-action">
+    //   <div class="d-flex w-100 justify-content-between">
+    //     <h5 class="mb-1">List group item heading</h5>
+    //     <small class="text-muted">3 days ago</small>
+    //   </div>
+    //   <p class="mb-1">Some placeholder content in a paragraph.</p>
+    //   <small class="text-muted">And some muted small print.</small>
+    // </a>
   }
 
   async function getPosts() {
     let res;
     try {
-      res = await fetch("./getPosts");
+      res = await fetch("./listDiaries");
       const posts = await res.json();
       renderPosts(posts);
     } catch (err) {

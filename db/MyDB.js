@@ -34,6 +34,20 @@ function MyDB() {
       client.close();
     }
   };
+  myDB.listDiaries = async function (user = {}) {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const diaries = client.db("Diary").collection("diaries");
+      console.log("USER " + user.user);
+      const res = await diaries.find({author:user.user}).toArray();
+      console.log(res);
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
   return myDB;
 }
 

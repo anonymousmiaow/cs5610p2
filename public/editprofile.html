@@ -20,12 +20,13 @@
             <a class="nav-link" aria-current="page" href="./index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="navUsername" aria-current="page" href="./profile.html">Welcome</a>
+            <a class="nav-link" id="navUsername" aria-current="page" href="./">Welcome</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="linkLogout" href="/logout">Log Out</a>
           </li>
         </ul>
+        <div class="h1">Edit Profile</div>
         <div
           class="alert alert-warning alert-dismissible fade show"
           role="alert"
@@ -39,12 +40,23 @@
             aria-label="Close"
           ></button>
         </div>
-        <h1 id="title" class="text-center mb-4"></h1>
-        <h5 id="content" class="mb-4"></h5>
-        <div class="d-flex justify-content-center">
-          <button id= "edit" type="button" class="btn btn-primary mx-5">Edit</button>
-          <button id="delete" type="button" class="btn btn-danger mx-5">Delete</button>
-        </div>
+        <form id="editprofile">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">User Name</label>
+            <input name="user" class="form-control" id="username" disabled="disabled">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Location</label>
+            <input name="location" class="form-control" id="location"></input>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Hobby</label>
+            <input name="hobby" class="form-control" id="hobby"></input>
+          </div>
+          <div class="d-grid gap-2 mt-5">
+            <button id="save" class="btn btn-primary" type="button">Save</button>
+          </div>
+        </form>
       </main>
     </div>
     <script
@@ -54,12 +66,12 @@
     ></script>
 
     <script type="module">
-      import diary from "./js/diary.js";
-      diary.getDiary();
-      diary.setupEdit();
-      diary.setupDelete();
-      diary.setupLogout();
-      diary.getCurrentUser();
+      import editprofile from "./js/editprofile.js";
+      import common from "./js/common.js";
+      editprofile.getProfile();
+      editprofile.setupSave();
+      common.setupLogout();
+      common.getCurrentUser();
     </script>
   </body>
 </html>

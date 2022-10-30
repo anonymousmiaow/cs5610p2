@@ -41,12 +41,21 @@ router.post("/signup", async (req, res) => {
   res.json({ isLoggedIn: true, err: null });
 });
 
-router.get("/updateUser", async (req, res) => {
-    console.log("updateUser");
+router.get("/getUser", async (req, res) => {
+    console.log("getUser");
+    console.log(req);
+    const user = await myDB.getUser(req.session.user);
+    res.json(user);
+});
+
+router.post("/updateProfile", async (req, res) => {
+  console.log("updateProfile");
+  console.log(req.body);
+  const diary = await myDB.updateProfile(req.session.user, req.body);
+  res.json({msg: "Profile updated" });
 });
 
 router.get("/listDiaries", async (req, res) => {
-    console.log("listDiaries");
     const diaries = await myDB.listDiaries(req.session.user);
     res.json(diaries);
 });

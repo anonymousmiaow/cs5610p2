@@ -20,6 +20,32 @@ function MyDB() {
       client.close();
     }
   };
+  myDB.getUser = async function (user = {}) {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const users = client.db("Diary").collection("users");
+      const res = await users.findOne({user:user.user});
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
+  myDB.updateProfile = async function (user = {}, profile = {}) {
+    let client;
+    try {
+      client = new MongoClient(mongoURL);
+      const users = client.db("Diary").collection("users");
+      console.log("user " + user);
+      console.log(profile);
+      const res = await users.updateOne({user:user.user}, {$set:{location:profile.location, hobby:profile.hobby}});
+      return res;
+    } finally {
+      console.log("Diary: Closing db connection");
+      client.close();
+    }
+  };
   myDB.authenticate = async function (user = {}) {
     let client;
     try {

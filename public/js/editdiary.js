@@ -20,7 +20,7 @@ function EditDiary() {
       res = await fetch("./getDiary?id=" + p.get("id"));
       const post = await res.json();
       console.log(post);
-      if(!post) {
+      if (!post) {
         console.log(post);
         redirect("/index");
       } else {
@@ -47,8 +47,8 @@ function EditDiary() {
       evt.preventDefault();
       const p = new URLSearchParams(window.location.search);
       res = await fetch("./editDiary?id=" + p.get("id"), {
-            method: "POST",
-            body: new URLSearchParams(new FormData(form)),
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
       });
       const response = await res.json();
       showMessage(response.msg);

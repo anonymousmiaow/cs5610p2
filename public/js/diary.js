@@ -32,7 +32,7 @@ function Diary() {
     window.location.replace(page + ".html");
   }
 
-  diary.getCurrentUser = async function() {
+  diary.getCurrentUser = async function () {
     let res;
     try {
       res = await fetch("./getCurrentUser");
@@ -48,13 +48,13 @@ function Diary() {
       // TODO implement error handling for the user;
       console.log(err);
     }
-  }
+  };
 
   function renderUsername(username) {
     console.log("renderUsername");
     const usernameEl = document.getElementById("navUsername");
     usernameEl.innerHTML = "Welcome, " + username + "!";
-  };
+  }
 
   diary.setupLogout = function () {
     const linkLogout = document.querySelector("#linkLogout");
@@ -76,7 +76,7 @@ function Diary() {
       res = await fetch("./getDiary?id=" + p.get("id"));
       const post = await res.json();
       console.log(post);
-      if(!post) {
+      if (!post) {
         console.log(post);
         redirect("/index");
       } else {

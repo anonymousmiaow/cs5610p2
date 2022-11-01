@@ -50,8 +50,8 @@ function EditProfile() {
       evt.preventDefault();
       console.log(form);
       res = await fetch("./updateProfile", {
-            method: "POST",
-            body: new URLSearchParams(new FormData(form)),
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
       });
       const response = await res.json();
       showMessage(response.msg);

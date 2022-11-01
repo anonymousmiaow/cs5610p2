@@ -15,8 +15,6 @@ This is a website application for people to share their life moments. It consist
 
 Users can read the website introduction and then register a new account. On the general page, they can view all moments posted by themselves, edit and delete these posts.least two pages introducing our skills, projects, hobbies, etc, and templates are allowed. The final product should be of W3C compliance, as well as formatted by eslint and prettier.
 
-### Screenshot
-<img width="1430" alt="HomePage Screenshot" src=" ">
 
 ### Tech Requirements
 HTML/CSS/JavaScript

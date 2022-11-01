@@ -4,7 +4,7 @@
 #### [The Diary App](https://cs5610p2-mydiary.herokuapp.com/)
 
 ### Author
-Yukun Zhou
+Yukun Zhou 
 Susie Xu
 
 ### Class link
@@ -36,7 +36,7 @@ Run npm start
 
 ### Presentation
 [Video Presentation](https://www.youtube.com/watch?v=pfqrOglsR2M&t=9s&ab_channel=SusieXu)  
-[Slides](https://docs.google.com/presentation/d/1sDRqdY6ifUkj93_Ze7Yav5F-bs8pQy7YlWuFYOJwZHM/edit?usp=sharing)
+[Slides](https://docs.google.com/presentation/d/1ZafMR5TT4_fvuNPSe9J0D6eRNyGez_GdlOhDPqdl9Ks/edit?usp=sharing)
 
 ### MIT License
 

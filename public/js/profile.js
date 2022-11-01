@@ -31,7 +31,7 @@ function Profile() {
     window.location.replace(page + ".html");
   }
 
-  profile.getCurrentUser = async function() {
+  profile.getCurrentUser = async function () {
     let res;
     try {
       res = await fetch("./getCurrentUser");
@@ -47,13 +47,13 @@ function Profile() {
       // TODO implement error handling for the user;
       console.log(err);
     }
-  }
+  };
 
   function renderUsername(username) {
     console.log("renderUsername");
     const usernameEl = document.getElementById("navUsername");
     usernameEl.innerHTML = "Welcome, " + username + "!";
-  };
+  }
 
   profile.getProfile = async function () {
     let res;

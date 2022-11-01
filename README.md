@@ -4,7 +4,7 @@
 #### [The Diary App](https://cs5610p2-mydiary.herokuapp.com/)
 
 ### Author
-Yukun Zhou 
+Yukun Zhou &&
 Susie Xu
 
 ### Class link

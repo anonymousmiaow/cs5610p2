@@ -42,7 +42,7 @@ Run npm start or nodemon app.js
 [Video Presentation](https://www.youtube.com/watch?v=pfqrOglsR2M&t=9s&ab_channel=SusieXu)  
 [Slides](https://docs.google.com/presentation/d/1sDRqdY6ifUkj93_Ze7Yav5F-bs8pQy7YlWuFYOJwZHM/edit?usp=sharing)
 
-### MIT Licen
+### MIT License
 
 ### Release
 

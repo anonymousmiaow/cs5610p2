@@ -43,4 +43,4 @@ Run npm start
 ### Release
 
 ### Design doc
-[Personal Home Design Doc](https://github.com/anonymousmiaow/cs5610p1/files/9648722/Personal.Home.Design.Doc.pdf)
+[Online Blog Application Design Doc](Design Doc.pdf)

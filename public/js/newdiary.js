@@ -13,7 +13,7 @@ function NewDiary() {
     window.location.replace(page + ".html");
   }
 
-  newDiary.getCurrentUser = async function() {
+  newDiary.getCurrentUser = async function () {
     let res;
     try {
       res = await fetch("./getCurrentUser");
@@ -29,13 +29,13 @@ function NewDiary() {
       // TODO implement error handling for the user;
       console.log(err);
     }
-  }
+  };
 
   function renderUsername(username) {
     console.log("renderUsername");
     const usernameEl = document.getElementById("navUsername");
     usernameEl.innerHTML = "Welcome, " + username + "!";
-  };
+  }
 
   newDiary.setupLogout = function () {
     const linkLogout = document.querySelector("#linkLogout");
@@ -57,8 +57,8 @@ function NewDiary() {
     linkLogout.addEventListener("click", async (evt) => {
       evt.preventDefault();
       res = await fetch("./createDiary", {
-            method: "POST",
-            body: new URLSearchParams(new FormData(form)),
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
       });
       const response = await res.json();
       showMessage(response.msg);

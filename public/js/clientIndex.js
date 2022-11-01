@@ -13,7 +13,7 @@ function ClientIndex() {
     const list = document.getElementById("list");
 
     console.log(posts);
-    for(const post of posts) {
+    for (const post of posts) {
       console.log(post);
       const entry = document.createElement("a");
       entry.className = "list-group-item list-group-item-action";
@@ -32,7 +32,7 @@ function ClientIndex() {
       p.innerHTML = `${post.content}`;
       entry.appendChild(p);
       entry.appendChild(small);
-      entry.addEventListener("click",  (evt) => {
+      entry.addEventListener("click", (evt) => {
         console.log("clicked");
         window.location.replace("diary.html?id=" + post._id);
       });
@@ -53,8 +53,6 @@ function ClientIndex() {
     //     <p class="mb-1">${p.content}</p>
     //   </a>`).join("")}
     // `;
-
-
 
     // <a href="#" class="list-group-item list-group-item-action">
     //   <div class="d-flex w-100 justify-content-between">
@@ -101,11 +99,11 @@ function ClientIndex() {
     }
   }
 
-  function renderUsername (username) {
+  function renderUsername(username) {
     console.log("renderUsername");
     const usernameEl = document.getElementById("navUsername");
     usernameEl.innerHTML = "Welcome, " + username + "!";
-  };
+  }
 
   clientIndex.setupLogin = function () {
     console.log("Setup login");
@@ -172,7 +170,7 @@ function ClientIndex() {
 
   clientIndex.setupNewpostClick = function () {
     const el = document.getElementById("newpost");
-    el.addEventListener("click",  (evt) => {
+    el.addEventListener("click", (evt) => {
       window.location.replace("newdiary.html");
     });
   };

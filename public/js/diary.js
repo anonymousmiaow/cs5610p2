@@ -109,6 +109,7 @@ function Diary() {
       res = await fetch("/deleteDiary?id=" + p.get("id"));
       const resDelete = await res.json();
       showMessage("Dairy deleted!");
+      
       setTimeout(() => redirect("/index"), 2000);
     });
   };
